@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Java Developer Intern</title>
+    <style>
+        :root {
+            --primary-color: #f7a1b3; /* Pastel pink */
+            --secondary-color: #fef2f5; /* Very light pink for secondary background */
+            --text-color: #4a4a4a; /* Dark gray for text readability */
+            --light-bg: #fff0f3; /* Light pink background */
+            --white: #ffffff;
+            --border-color: #f5d9df; /* Light pink border */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 6rem 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 0.15em solid var(--white);
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret 0.75s step-end infinite;
+            max-width: fit-content;
+            margin: 0 auto;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--white) }
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        h2:hover::after {
+            width: 80px;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            margin: 1rem 0;
+            color: var(--text-color);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .profile {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .profile-image {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--white);
+            margin-bottom: 1.5rem;
+            background-color: var(--light-bg);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+        
+        .skill-tag {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        
+        .project {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .project:hover {
+            padding-left: 0.5rem;
+        }
+        
+        .project:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-right: 1.5rem;
+        }
+        
+        .contact-item i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.6rem 1.2rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .social-link:hover {
+            background-color: var(--text-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .social-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--primary-color);
+        }
+        
+        .project-link:hover {
+            color: var(--text-color);
+            border-bottom: 1px solid var(--text-color);
+        }
+        
+        .project-link i {
+            margin-right: 0.5rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .footer-nav {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-nav a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-nav a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            color: var(--secondary-color);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+                white-space: normal;
+                animation: none;
+                border-right: none;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .profile {
+                flex-direction: column;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+            
+            .skills {
+                gap: 0.6rem;
+            }
+            
+            .skill-tag {
+                padding: 0.4rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Nguyễn Phạm Thu Hà - Java Developer Intern</h1>
+            <p>An intern passionate about back-end development with Java and Spring Framework, seeking opportunities to learn and contribute to real-world projects.</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="profile">
+            <img src="/api/placeholder/160/160" alt="Profile Picture" class="profile-image">
+            <h2>Nguyễn Phạm Thu Hà</h2>
+            <p>Java Developer Intern</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i>📧</i> nha3697@gmail.com
+                </div>
+                <div class="contact-item">
+                    <i>📱</i>0367921030
+                </div>
+            </div>
+            <a href="https://github.com/hanpt04" target="_blank" class="social-link">
+                <i>🔗</i> GitHub Profile
+            </a>
+        </section>
+        
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hello! I am a Software Engineering student seeking internship opportunities to enhance my knowledge and skills in back-end development with Java.</p>
+            <p>During my studies, I have gained experience with Java, Spring Framework, RESTful APIs, and databases. I am eager to learn more and contribute to real-world projects to build my professional experience.</p>
+        </section>
+        
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            
+            <h3>Back-end Technologies</h3>
+            <div class="skills">
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">Spring Framework</span>
+                <span class="skill-tag">Spring Boot</span>
+                <span class="skill-tag">Spring Data</span>
+                <span class="skill-tag">RESTful API</span>
+                <span class="skill-tag">MVC</span>
+            </div>
+            
+            <h3>Database</h3>
+            <div class="skills">
+                <span class="skill-tag">SQL Server</span>
+                <span class="skill-tag">JPA/Hibernate</span>
+            </div>
+            
+            <h3>Front-end Basics</h3>
+            <div class="skills">
+                <span class="skill-tag">HTML</span>
+                <span class="skill-tag">CSS</span>
+                <span class="skill-tag">Basic JavaScript</span>
+            </div>
+            
+            <h3>Tools & Others</h3>
+            <div class="skills">
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">Maven</span>
+                <span class="skill-tag">Postman</span>
+                <span class="skill-tag">IntelliJ IDEA</span>
+            </div>
+        </section>
+        
+        <section id="projects">
+            <h2>Projects</h2>
+            
+            <div class="project">
+                <h3>Child Vaccine Schedule Tracking System</h3>
+                <p><strong>Technologies Used:</strong> Java, Spring Boot, Spring Data JPA, SQL Server, RESTful API, HTML/CSS</p>
+                <p>A system for managing and tracking children's vaccination schedules, assisting parents and healthcare professionals with scheduling, managing, and monitoring vaccination records. Features include appointment booking, reminders, progress tracking, and health record storage.</p>
+                <p><strong>My Contributions:</strong> Developed the entire back-end using Spring Boot, designed RESTful APIs, built the database, and supported front-end development (using AI for UI design).</p>
+                <a href="https://github.com/hanpt04/Child-Vaccine-Schedule-Tracking-System" target="_blank" class="project-link">
+                    <i>🔗</i> View Source Code on GitHub
+                </a>
+            </div>
+            
+            <div class="project">
+                <h3>Smart Wallet - Personal Expense Management App</h3>
+                <p><strong>Technologies Used:</strong> Java Spring Boot, JPA/Hibernate, SQL Server, RESTful API, HTML/CSS/JavaScript</p>
+                <p>A web application that helps users manage and track personal expenses intelligently. Key features include recording income and expenses, categorizing transactions, setting budgets, and a visual dashboard displaying spending statistics over time.</p>
+                <p><strong>My Contributions:</strong> Designed and developed the back-end, built APIs for the front-end, implemented the database, and assisted in developing the user interface (using AI for design).</p>
+                <a href="https://github.com/hanpt04/SmartWalletProject" target="_blank" class="project-link">
+                    <i>🔗</i> View Source Code on GitHub
+                </a>
+            </div>
+        </section>
+        
+        <section id="education">
+            <h2>Education</h2>
+            <h3>FPT University</h3>
+            <p>Information Technology| 2022 - Present</p>
+            <p>Major: Software Engineering</p>
+            <p>GPA: 3.33/4.0 (As of now)</p>
+            
+            <h3>Online Courses</h3>
+            <p>HTML & CSS - Coursera</p>
+        </section>
+        
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i>📧</i> nha3697@gmail.com
+                </div>
+                <div class="contact-item">
+                    <i>📱</i> 0367921030
+                </div>
+            </div>
+            <a href="https://github.com/hanpt04" target="_blank" class="social-link">
+                <i>🔗</i> GitHub Profile
+            </a>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-nav">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#education">Education</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <p class="copyright">© 2025 - Created by Nguyen Pham Thu Ha</p>
+                <p>Java Developer Intern | Passionate about Technology and Software Development</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
